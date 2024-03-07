@@ -1,0 +1,13 @@
+.content-main {
+    display: flex;
+    padding: 20px;
+    padding-left: 250px; /* Ajuste para el sidebar */
+}
+
+.content {
+    background-color: #fff; /* Color de fondo */
+    padding: 20px;
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    flex: 1; /* Que ocupe todo el espacio disponible */
+}

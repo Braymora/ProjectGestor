@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagrama de Gantt</title>
+    <!-- Enlaces a las bibliotecas necesarias -->
+    <script src="{% static 'frappe-gantt/dist/frappe-gantt.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'frappe-gantt/dist/frappe-gantt.css' %}">
+    <style>
+        /* Estilos para el contenedor del diagrama de Gantt */
+        #gantt-container {
+            width: 80%; /* Ajusta el ancho del contenedor según tus necesidades */
+            margin: 0 auto; /* Centra el contenedor horizontalmente */
+        }
+
+        /* Estilos para el popup personalizado */
+        .custom-popup {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            max-width: 300px; /* Ajusta el ancho máximo según tus necesidades */
+        }
+
+        .custom-popup h3 {
+            margin-top: 0;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .custom-popup p {
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .custom-popup p span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Contenedor para el diagrama de Gantt -->
+    <div id="gantt-container">
+        <div id="gantt"></div>
+    </div>
+
+    <script>
+        // Obtener datos de actividades desde el contexto de Django
+        var actividades = JSON.parse('{{ actividades | safe }}');
+
+        // Definir función para el HTML personalizado de la ventana emergente
+        function customPopupHtml(actividad) {
+            return '<div class="custom-popup">' +
+                       '<h3>Detalles de la tarea</h3>' +
+                       '<p>Nombre: <span class="task-name">' + actividad.name + '</span></p>' +
+                       '<p>Fecha de inicio: <span class="start-date">' + actividad.start + '</span></p>' +
+                       '<p>Fecha de finalización: <span class="end-date">' + actividad.end + '</span></p>' +
+                   '</div>';
+        }
+
+        // Inicializar y renderizar el diagrama de Gantt con los datos de actividades
+        var gantt = new Gantt("#gantt", actividades, {
+            header_height: 50,
+            column_width: 30,
+            step: 24,
+            view_modes: ['Quarter Day', 'Half Day', 'Day', 'Week', 'Month'],
+            bar_height: 20,
+            bar_corner_radius: 3,
+            arrow_curve: 5,
+            padding: 18,
+            view_mode: 'Day',
+            date_format: 'YYYY-MM-DD',
+            language: 'es', // o 'en', 'it', 'ru', 'ptBr', 'fr', 'tr', 'zh', 'de', 'hu'
+            custom_popup_html: customPopupHtml
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="fragment" content="!">
+    <title>Inicio - Colvapro</title>
+    <meta name="description"
+        content="Página de inicio de Colvapro con tus proyectos principales y todas tus historias de usuario, tareas y problemas asignados y seguidos">
+    <meta name="keywords"
+        content="ágil, scrum, colvapro, gestión, proyecto, desarrollador, diseñador, experiencia de usuario">
+    <link rel="stylesheet" href="{% static './css/theme-taiga.css' %}">
+    <link rel="icon" type="image/png" href="http://localhost:9000/v-1708598134890/images/favicon.png">
+
+    <style>
+        .home-wrapper .dashboard-container {
+            display: block;
+            /* flex-direction: row;
+            margin-right: 1.5rem; */
+        }
+
+
+        .centered {
+            max-width: none;
+        }
+
+
+        .tableType {
+            border: 1px sólido #83eede;
+            border-collapse: colapso;
+            padding: 5px;
+            width: 100%;
+        }
+
+        .tableType th {
+            border: 1px sólido #83eede;
+            padding: 5px;
+            background: #f1f1f4;
+        }
+
+        .tableType td {
+            border: 1px sólido #83eede;
+            padding: 5px;
+        }
+
+        td.conAdd {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .tableType-btn {
+            background-color: #83eede;
+            border-radius: 4px;
+            height: 26px;
+            transition: all .4s ease;
+            width: 26px;
+        }
+
+        .tableType-btn:hover {
+            background-color: #008AA8;
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <div tg-navigation-bar="" ng-if="!errorHandling.showingError">
+        <nav ng-if="vm.isEnabledHeader" class="navbar">
+            <div class="nav-left">
+                <div tg-dropdown-project-list="tg-dropdown-project-list" class="topnav-dropdown-wrapper">
+                    <div class="dropdown-project-list">
+                        <a href="" title="Proyectos" tg-nav="projects" class="dropdown-project-list-projects">
+                            Tus Proyectos
+                        </a>
+                        <div class="navbar-dropdown">
+                            <div>
+                                <h2>Crea tu primer proyecto</h2>
+                                <p class="dropdown-project-list-desc">Aún no tienes ningún proyecto. Crea uno ahora,
+                                    invita a tu equipo y comienza a usar Colvapro al máximo.</p>
+                                <div class="create-options">
+                                    <a href="{% url 'main:asignar' %}" title="Nuevo proyecto"
+                                        class="create-project-btn button-primary"><span>Nuevo proyecto</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div tg-dropdown-user="tg-dropdown-user">
+                <div class="dropdown-user-inner">
+                    <div class="dropdown-user-navbar"><a tg-nav="profile" title="mike" class="user-avatar"
+                            href=""><img tg-avatar="vm.user" alt="mike"
+                                src="{% static './media/user-avatar-05.png' %}" title="mike"
+                                style="background: rgb(183, 203, 131);"></a>
+                        <button class="chevron">
+                            <tg-svg svg-icon="icon-chevron-down">
+                            </tg-svg>
+                        </button>
+                    </div>
+                    <div class="navbar-dropdown dropdown-user">
+                        <div class="dropdown-user-profile"><a tg-nav="profile" href="#" class="profile-link avatar">
+                                <img tg-avatar="vm.user" alt="mike" src="{% static './media/user-avatar-05.png' %} "
+                                    title="mike" style="background: rgb(183, 203, 131);"></a>
+                            <div class="dropdown-user-data"><a tg-nav="profile" href="#"
+                                    class="profile-link full-name">{{ first_name}} </a>
+                                <div class="profile-link email">{{ email }}</div>
+                                <p><a href="#" title="Editar perfil" class="edit-profile">Editar perfil</a></p>
+                            </div>
+                        </div>
+                        <ul>
+                            <li class="user-profile-option">
+                                <a href="#" title="Configuración de la cuenta" class="secondary">Configuración de la
+                                    cuenta</a>
+                            </li>
+                            <li class="user-profile-option">
+                                <a href="{% url 'main:logout' %}" title="Cerrar sesión"> Cerrar sesión</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div ng-if="!errorHandling.showingError">
+        <div ng-view="" class="master">
+            <div class="home-wrapper centered">
+                <div class="duty-summary">
+                    <h1>Tablero de Proyectos</h1>
+                    <tg-working-on class="dashboard-container">
+                        <section class="working-on-container">
+                            <header>
+                                <h2 class="title-bar working-on-title">Trabajando en</h2>
+                            </header>
+                            <div ng-if="vm.assignedTo != undefined &amp;&amp; vm.assignedTo.size === 0"
+                                class="working-on-empty">
+                                <div class="contable">
+
+                                    <table class="tableType">
+                                    <thead>
+                                        <tr>
+                                            <th>Nombre</th>
+                                            <th>Tipo 1</th>
+                                            <th>Tipo 2</th>
+                                            <th>Tipo 3</th>
+                                            <th>Tipo 4</th>
+                                            <th>Agregar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for usuario, proyectos_por_tipo in proyectos_por_usuario.items %}
+                                        <tr>
+                                            <td>{{ usuario.usuario.first_name }} {{ usuario.usuario.last_name }}</td>
+                                            <td>{{ proyectos_por_tipo.tipo1 }}</td>
+                                            <td>{{ proyectos_por_tipo.tipo2 }}</td>
+                                            <td>{{ proyectos_por_tipo.tipo3 }}</td>
+                                            <td>{{ proyectos_por_tipo.tipo4 }}</td>
+                                            <td class="conAdd"><button class="tableType-btn">+</button></td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                                    
+                                    
+                                </div>
+                            </div>
+                        </section>
+
+                    </tg-working-on>
+                </div>
+                <aside tg-home-project-list="" class="project-list">
+                    <section ng-if="vm.projects != undefined &amp;&amp; vm.projects.size === 0" class="projects-empty">
+                        <tg-svg svg-icon="icon-project">
+                        </tg-svg>
+                        <p>Todavía no tienes ningún proyecto</p>
+                        <a variant="primary" href="{% url 'main:asignar' %}" title="Crear proyecto"
+                            class="btn-small create-project-button">Nuevo proyecto</a>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

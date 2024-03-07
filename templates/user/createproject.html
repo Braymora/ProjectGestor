@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="fragment" content="!">
+    <title>Create Project</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="agile, scrum, taiga, management, project, developer, designer, user experience">
+    <link rel="stylesheet" href="{% static './css/theme-taiga.css' %}">
+    <link rel="icon" type="image/png" href="http://localhost:9000/v-1708598134890/images/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body >
+    <div tg-navigation-bar="" ng-if="!errorHandling.showingError">
+        <nav ng-if="vm.isEnabledHeader" class="navbar">
+            <div class="nav-left">
+                <div ng-if="vm.isAuthenticated" tg-dropdown-project-list="tg-dropdown-project-list" active="vm.active == 'projects' || vm.active == 'project'" class="topnav-dropdown-wrapper">
+                    <div ng-class="{'active': active}" class="dropdown-project-list">
+                        <a href="http://localhost:9000/projects" title="Proyectos" tg-nav="projects" class="dropdown-project-list-projects">Tus Proyectos</a>
+                        <div class="navbar-dropdown">
+                            <div ng-if="!vm.projects.size">
+                                <h2>Crea tu primer proyecto</h2>
+                                <p class="dropdown-project-list-desc">Aún no tienes ningún proyecto. Crea uno ahora, invita a tu equipo y comienza a usar Colvapro al máximo.</p>
+                                <div class="create-options">
+                                    <a href="#" tg-nav="create-project" title="Nuevo proyecto" class="create-project-btn button-primary"><span>Nuevo proyecto</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div tg-dropdown-user="tg-dropdown-user">
+                <div class="dropdown-user-inner">
+                    <div class="dropdown-user-navbar">
+                        <a tg-nav="profile" title="mike" class="user-avatar" href="http://localhost:9000/profile">
+                            <img tg-avatar="vm.user" alt="mike" src="Home%20-%20Colvapro_files/user-avatar-05.png" title="mike" style="background: rgb(183, 203, 131);">
+                        </a>
+                        <button class="chevron">
+                            <tg-svg svg-icon="icon-chevron-down"></tg-svg>
+                        </button>
+                    </div>
+                    <div class="navbar-dropdown dropdown-user">
+                        <div class="dropdown-user-profile">
+                            <a tg-nav="profile" href="#" class="profile-link avatar">
+                                <img tg-avatar="vm.user" alt="mike" src="Home%20-%20Colvapro_files/user-avatar-05.png" title="mike" style="background: rgb(183, 203, 131);">
+                            </a>
+                            <div class="dropdown-user-data">
+                                <a tg-nav="profile" href="#" class="profile-link full-name">mike</a>
+                                <div class="profile-link email">manuel.david.13.b@gmail.com</div>
+                                <p>
+                                    <a href="#" tg-nav="user-settings-user-profile" title="Editar perfil" translate="PROJECT.NAVIGATION.EDIT_PROFILE" class="edit-profile">Editar perfil</a>
+                                </p>
+                            </div>
+                        </div>
+                        <ul>
+                            <li class="user-profile-option">
+                                <a href="#" tg-nav="user-settings-user-change-password" title="Configuración de la cuenta" translate="PROJECT.NAVIGATION.ACCOUNT_SETTINGS" class="secondary">Configuración de la cuenta</a>
+                            </li>
+                            <li class="user-profile-option">
+                                <a href="#" tg-nav="user-settings-mail-notifications" title="Editar tus configuraciones de notificación" translate="PROJECT.NAVIGATION.NOTIFICATIONS" class="secondary">Notificaciones</a>
+                            </li>
+                            <li class="user-profile-option">
+                                <a href="#" ng-click="vm.logout()" title="Cerrar sesión" translate="COMMON.LOGOUT">Cerrar sesión</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div>
+        <div ng-view="" class="master" >
+            <div class="create-project">
+                <div class="create-project-wrapper">
+                    <h1 class="create-project-title">Crear Proyecto</h1>
+                    <h3 class="create-project-description">¿Qué plantilla se ajusta mejor a tu proyecto?</h3>
+                    <ul class="create-project-selector ">
+                        <li>
+                            <a title="Scrum" tg-nav="create-project-scrum" href="#" class="">
+                                <div class="create-project-selector-icon">
+                                    <tg-svg svg-icon="icon-scrum"><svg class="icon icon-scrum"  >
+                                        <use xlink:href="#icon-scrum" href="#icon-scrum"></use>
+                                        </svg>
+                                    </tg-svg>
+                                    <div class="input-with-icon ">
+                                        <i class="fas fa-exclamation-triangle fa-2x"></i>
+                                    </div>
+                                </div>
+                                <div class="create-project-selector-template-wrapper">
+                                    <p translate="PROJECT.CREATE.TEMPLATE_SCRUM" class="create-project-selector-template">Scrum</p>
+                                    <p translate="PROJECT.CREATE.TEMPLATE_SCRUM_DESC" class="create-project-selector-description">Prioriza y resuelve tus tareas en ciclos cortos de tiempo.</p>
+                                    <div class="create-project-selector-question">
+                                        <tg-svg svg-icon="icon-question" ng-click="vm.displayHelp('scrum', $event)" role="button" tabindex="0">
+                                            <svg class="icon icon-question" >
+                                                <use xlink:href="#icon-question" href="#icon-question"></use>
+                                            </svg>
+                                        </tg-svg>
+                                    </div>
+                                    <div ng-show="vm.displayScrumDesc" class="create-project-selector-long-description ng-hide" aria-hidden="true">
+                                        <p translate="PROJECT.CREATE.TEMPLATE_SCRUM_LONGDESC">Scrum es una metodología ágil, iterativa e incremental, de desarrollo de software para la gestión del desarrollo de productos. El backlog de producto es lo que finalmente será entregado, ordenado en el orden que debe ser entregado. El product backlog se divide en trozos manejables y ejecutables llamados sprints. Cada cierto tiempo el equipo inicia un nuevo sprint y se compromete a entregar un número de user stories del backlog, de acuerdo a la capacidad, habilidades y recursos. El proyecto avanza hasta que el backlog se vacía.</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a tg-nav="create-project-kanban" title="Kanban" href="#" class="">
+                                <div class="create-project-selector-icon">
+                                    <tg-svg svg-icon="icon-kanban"><svg class="icon icon-kanban" >
+                                        <use xlink:href="#icon-kanban" href="#icon-kanban"></use>
+                                        </svg>
+                                    </tg-svg>
+                                    <div class="input-with-icon ">
+                                        <i class="fas fa-exclamation-triangle fa-2x"></i>
+                                    </div>
+                                </div>
+                                <div class="create-project-selector-template-wrapper">
+                                    <p translate="PROJECT.CREATE.TEMPLATE_KANBAN" class="create-project-selector-template">Kanban</p>
+                                    <p translate="PROJECT.CREATE.TEMPLATE_KANBAN_DESC" class="create-project-selector-description">Mantén un flujo constante de tareas independientes</p>
+                                    <div class="create-project-selector-question">
+                                        <tg-svg svg-icon="icon-question" ng-click="vm.displayHelp('kanban', $event)" role="button" tabindex="0">
+                                            <svg class="icon icon-question" >
+                                                <use xlink:href="#icon-question" href="#icon-question"></use>
+                                            </svg>
+                                        </tg-svg>
+                                    </div>
+                                    <div ng-show="vm.displayKanbanDesc" class="create-project-selector-long-description ng-hide" aria-hidden="true">
+                                        <p translate="PROJECT.CREATE.TEMPLATE_KANBAN_LONGDESC">La metodología Kanban se usa para dividir el proceso de desarrollo (o cualquier tipo de proyecto) en etapas. Una tarjeta de Kanban es como una ficha o un post-it que detalla cada tarea (o user story) en un proyecto para ser completada. El tablero de Kanban se usa para mover cada tarjeta de un estado de progreso al siguiente, y de este modo ayuda a trazar el progreso.</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a tg-nav="create-project-import" title="Proyecto Personalizado" href="{% url 'asignar' %}">
+                                <div class="create-project-selector-icon">
+                                    <tg-svg svg-icon="icon-upload"><svg class="icon icon-upload" >
+                                        <use xlink:href="#icon-upload" href="#icon-upload"></use>
+                                        </svg>
+                                    </tg-svg>
+                                
+                                    <div class="input-with-icon ">
+                                        <i class="fa-solid fa-folder fa-2x"></i>
+                                    </div>
+                                </div>
+                                <div class="create-project-selector-template-wrapper">
+                                    <p  title="Importar proyecto"  class="create-project-selector-template">Proyecto Personalizado</p>
+                                    <p class="create-project-selector-description">Generar Proyecto Basado en Plantilla Colvatel </p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a tg-nav="create-project-duplicate" title="Duplicar proyecto" href="#" class="">
+                                <div class="create-project-selector-icon">
+                                    <tg-svg svg-icon="icon-duplicate"><svg class="icon icon-duplicate" >
+                                        <use xlink:href="#icon-duplicate" href="#icon-duplicate"></use>
+                                        </svg>
+                                    </tg-svg>
+                                    <div class="input-with-icon ">
+                                        <i class="fas fa-exclamation-triangle fa-2x"></i>
+                                    </div>
+                                </div>
+                                <div class="create-project-selector-template-wrapper">
+                                    <p  class="create-project-selector-template">Duplicar proyecto</p>
+                                    <p  class="create-project-selector-description">Empieza un nuevo proyecto manteniendo tu configuración</p>
+                                </div>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

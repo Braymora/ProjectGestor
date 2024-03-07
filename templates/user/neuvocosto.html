@@ -1,0 +1,100 @@
+{% extends 'plantilla.html' %}
+{% load static %}
+{% block id_project %}proyecto.id{% endblock %}
+
+{% block title %} gestion de proyecto  - {{proyecto.name}} {% endblock %}
+{% block name %} 
+    {{proyecto.name}}
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static './css/stilos_kanban.css' %}">
+{% endblock %}
+
+{% block conten %}
+<br>
+<div style=" width: auto;  height: 600px; overflow-y: auto; padding: 10px; " >
+    <form method="post" name="costoForm" novalidate="novalidate" class="ng-pristine ng-invalid ng-invalid-required">
+        {% csrf_token %}
+        <div>
+            <fieldset>
+                <label for="contrato">Contrato</label>
+                <input id="contrato" name="contrato" type="text" ng-model="vm.costoForm.contrato" placeholder="Contrato (Requerido)" required="required" class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" aria-invalid="true">
+            </fieldset>
+        </div>
+        <div>
+            <fieldset>
+                <label for="objeto">Objeto</label>
+                <textarea id="objeto" name="objeto" ng-class="{'checksley-error': !!vm.errorList.includes('description') }" ng-model="vm.costoForm.objeto" placeholder="Objeto (Requerido)" required="required" class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" aria-invalid="true"></textarea>
+            </fieldset>
+        </div>
+        <div>
+            <fieldset>
+                <label for="tipo">Tipo</label>
+                <select id="tipo" name="tipo">
+                    <option value="aliado">Colaborador</option>
+                    <option value="provedor">Provedor</option>
+                    <option value="cliente">Cliente</option>
+                </select>
+            
+            </fieldset>
+        </div>
+        <div>
+            <fieldset>
+                <label for="aliado">Nombre </label>
+                
+                <input id="aliado" name="aliado" type="text" ng-model="vm.costoForm.aliado" placeholder="Aliado (Requerido)" required="required" class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" aria-invalid="true">
+                
+            </fieldset>
+        </div>
+        <div>
+            <fieldset>
+                <label for="contrato_aliado">Contrato Aliado</label>
+                <input id="contrato_aliado" name="contrato_aliado" type="text" ng-model="vm.costoForm.contrato_aliado" placeholder="Contrato Aliado (Requerido)" required="required" class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" aria-invalid="true">
+            </fieldset>
+        </div>
+        <div>
+            <fieldset>
+                <label for="backlog">Backlog</label>
+                <textarea id="backlog" name="backlog" ng-class="{'checksley-error': !!vm.errorList.includes('description') }" ng-model="vm.costoForm.backlog" placeholder="Backlog (Requerido)" required="required" class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" aria-invalid="true"></textarea>
+            </fieldset>
+        </div>
+        <div>
+            <fieldset>
+                <label for="one_time">One Time</label>
+                <textarea id="one_time" name="one_time" ng-class="{'checksley-error': !!vm.errorList.includes('description') }" ng-model="vm.costoForm.one_time" placeholder="One Time (Requerido)" required="required" class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" aria-invalid="true"></textarea>
+            </fieldset>
+        </div>
+        <div>
+            <fieldset>
+                <label for="recurrente">Recurrente</label>
+                <textarea id="recurrente" name="recurrente" ng-class="{'checksley-error': !!vm.errorList.includes('description') }" ng-model="vm.costoForm.recurrente" placeholder="Recurrente (Requerido)" required="required" class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" aria-invalid="true"></textarea>
+            </fieldset>
+        </div>
+        <div>
+            <fieldset>
+                <label for="meses">Meses</label>
+                <input id="meses" name="meses" type="text" ng-model="vm.costoForm.meses" placeholder="Meses (Requerido)" required="required" class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" aria-invalid="true">
+            </fieldset>
+        </div>
+        <br>
+        <div>
+            <fieldset>
+                <button variant="secondary" type="button" title="Volver" class="btn-small create-project-action-cancel">Volver</button>
+                <button type="submit" class="btn-small create-project-action-submit" title="Asignar Proyecto">Guardar Costo</button>
+            </fieldset>
+        </div>
+        <br>
+    </form>
+    
+
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+    
+{% endblock %}
+
+

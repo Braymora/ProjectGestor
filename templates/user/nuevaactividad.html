@@ -1,0 +1,74 @@
+{% extends 'plantilla.html' %}
+{% load static %}
+
+{% block title %} Gestión de Proyecto - {{ proyecto.name }} {% endblock %}
+{% block name %}
+    {{ proyecto.name }}
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static './css/stilos_kanban.css' %}">
+{% endblock %}
+
+{% block conten %}
+<div class="main detail"> 
+    <h1 tg-main-title="" i18n-section-name="Nueva Actividad" title="Nueva Actividad" ><span> Nueva Actividad </span></h1>
+    <div class="col-md-8 main detail">
+        <form name="actividadForm" class="ng-pristine ng-invalid ng-invalid-required" method="POST">
+            {% csrf_token %}
+            <div>
+                <fieldset >
+                    <label for="actividad-nombre">Nombre de la Actividad</label>
+                    <input type="text" placeholder="Nombre de la Actividad (Requerido)" name="actividad-nombre" required="required" class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" aria-invalid="true">
+                </fieldset>
+            </div>
+            <div>
+                <fieldset  >
+                    <label for="actividad-descripcion">Descripción de la Actividad</label>
+                    <textarea placeholder="Descripción de la Actividad (Requerido)" name="actividad-descripcion" required="required" class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" aria-invalid="true"></textarea>
+                </fieldset>
+            </div>
+           <!-- <fieldset  >
+                <label for="actividad-proyecto">Proyecto</label>
+                <select id="actividad-proyecto" name="actividad-proyecto">
+                    {% for proyecto in proyectos %}
+                    <option value="{{ proyecto.id }}"> {{ proyecto.name }} </option>
+                    {% endfor %}
+                </select>
+            </fieldset>  -->
+            <fieldset  >
+                <label for="actividad-fecha-inicio">Fecha de Inicio</label>
+                <input type="date" name="actividad-fecha-inicio" required="required">
+            </fieldset>
+            <fieldset  >
+                <label for="actividad-fecha-fin">Fecha de Fin</label>
+                <input type="date" name="actividad-fecha-fin" required="required">
+            </fieldset>
+            <!-- <fieldset  >
+                <label for="actividad-asignado">Asignado</label>
+                <select id="actividad-asignado" name="actividad-asignado">
+                    {% for usuario in usuarios %}
+                    <option value="{{ usuario.id }}"> {{ usuario.usuario.username }} </option>
+                    {% endfor %}
+                </select>
+            </fieldset> -->
+            <div>
+                <br>
+                <br>
+                <fieldset>
+                    <button variant="secondary" type="button" title="Volver" class="btn-small create-actividad-action-cancel">Volver</button>
+                    <button type="submit" class="btn-small  create-actividad-action-submit" title="Crear Actividad">Crear Actividad</button>
+                </fieldset>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static './js/scripts.js' %}"></script>
+{% endblock %}

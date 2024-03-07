@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="fragment" content="!">
+    <title>Iniciar sesión - Colvapro</title>
+    <meta name="description" content="Inicia sesión en Colvapro, una plataforma de gestión de proyectos para startups y desarrolladores y diseñadores ágiles que desean una herramienta simple y hermosa que haga que el trabajo sea verdaderamente agradable.">
+    <meta name="keywords" content="ágil, scrum, colvapro, gestión, proyecto, desarrollador, diseñador, experiencia usuario">
+    <link rel="stylesheet" href="{% static './css/theme-taiga.css' %} ">
+
+    <link rel="icon" type="image/png" href="">
+
+    
+</head>
+<body>
+    <div class="wrapper">
+  <div class="auth">
+    <div class="auth-container">
+    <div class="logo-svg">
+
+        <svg preserveAspectRatio="xMidYMid meet" version="1.1" viewBox="0 0 267.204 267.245" xmlns:svg="http://www.w3.org/2000/svg">
+            <path d="M228.256 39.167l-11.755 82.74-82.74 11.756 11.756-82.74z" fill="#a295ae" opacity=".8"></path>
+            <path d="M39.19 228.134l11.755-82.74 82.74-11.756-11.755 82.74z" fill="#5d6f6d" opacity=".8"></path>
+            <path d="M39.19 39.277l82.74 11.755 11.756 82.74-82.74-11.755z" fill="#8cd592" opacity=".8"></path>
+            <path d="M228.16 228.144l-82.74-11.755-11.756-82.742 82.74 11.756z" fill="#665e74" opacity=".8"></path>
+            <path d="M133.738 267.245l-50.194-66.82 50.194-66.817 50.194 66.818z" fill="#3c3647" opacity=".8"></path>
+            <path d="M267.204 133.48l-66.82 50.195-66.817-50.194 66.818-50.193z" fill="#837193" opacity=".8"></path>
+            <path d="M133.616 0l50.194 66.82-50.194 66.817L83.422 66.82z" fill="#a2f4ac" opacity=".8"></path>
+            <path d="M0 133.706l66.82-50.194 66.817 50.194L66.82 183.9z" fill="#7ea685" opacity=".8"></path>
+            <path d="M133.602 101.85l31.772 31.772-31.772 31.772-31.772-31.772z" fill="#3c3647"></path>
+        </svg>
+
+    </div>
+        <h1 class="logo">Colvapro</h1>
+        <h2 class="tagline">AMAR TU PROYECTO</h2>
+        <div class="login-form-container">
+        <form class="login-form ng-pristine ng-valid" method="POST" >
+          {% csrf_token %}
+            <fieldset>
+                <input type="text" autocorrect="off" autocapitalize="none" autofocus="" required="" name="username" data-required="true" placeholder="Username or email (case sensitive)">
+            </fieldset>
+            <fieldset class="login-password">
+                <input type="password" name="password" data-required="true" placeholder="Password (case sensitive)">
+          </fieldset>
+          <fieldset class="end">
+            <button  type="submit" variant="primary"  title="Iniciar sesión" class="btn-small full" > Iniciar sesión </button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

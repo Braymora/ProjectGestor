@@ -1,0 +1,69 @@
+{% extends 'plantilla.html' %}
+{% load static %}
+{% block id_project %}proyecto.id{% endblock %}
+
+{% block title %} gestion de proyecto  - {{proyecto.name}} {% endblock %}
+{% block name %} 
+    {{proyecto.name}}
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static './css/stilos_kanban.css' %}">
+{% endblock %}
+
+{% block conten %}
+<br>
+<div style=" width: auto;  height: 600px; overflow-y: auto; padding: 10px; " >
+    <form method="post" name="projectForm"  novalidate="novalidate" class="ng-pristine ng-invalid ng-invalid-required">
+        {% csrf_token %}
+        <div ng-include="'projects/create/import-project-form-common/name.html'">
+            <fieldset>
+                <label for="identificando_problema">Identificación del problema</label>
+                <input id="identificando_problema" name="identificando_problema" type="text" ng-model="vm.projectForm.identificando_problema" placeholder="Identificación (Requerido)" data-required="true" required="required" class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" aria-invalid="true">
+            </fieldset>
+        </div>
+        <div ng-include="'projects/create/import-project-form-common/description.html'">
+            <fieldset>
+                <label for="causa">Causa</label>
+                <textarea id="causa" name="causa" ng-class="{'checksley-error': !!vm.errorList.includes('description') }" ng-model="vm.projectForm.causa" placeholder="Causa del problema (Requerido)" data-required="true" required="required" class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" aria-invalid="true"></textarea>
+            </fieldset>
+        </div>
+        <div ng-include="'projects/create/import-project-form-common/description.html'">
+            <fieldset>
+                <label for="solucion">Solución</label>
+                <textarea id="solucion" name="solucion" ng-class="{'checksley-error': !!vm.errorList.includes('description') }" ng-model="vm.projectForm.solucion" placeholder="Solución del problema (Requerido)" data-required="true" required="required" class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" aria-invalid="true"></textarea>
+            </fieldset>
+        </div>
+        <div ng-include="'projects/create/import-project-form-common/description.html'">
+            <fieldset>
+                <label for="planes_mejora_aplicados">Planes de mejora aplicados</label>
+                <textarea id="planes_mejora_aplicados" name="planes_mejora_aplicados" ng-class="{'checksley-error': !!vm.errorList.includes('description') }" ng-model="vm.projectForm.planes_mejora_aplicados" placeholder="Plan de mejora (Requerido)" data-required="true" required="required" class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" aria-invalid="true"></textarea>
+            </fieldset>
+        </div>
+        <div ng-include="'projects/create/import-project-form-common/description.html'">
+            <fieldset>
+                <label for="resultados_planes_mejora">Resultados de los planes de mejora</label>
+                <textarea id="resultados_planes_mejora" name="resultados_planes_mejora" ng-class="{'checksley-error': !!vm.errorList.includes('description') }" ng-model="vm.projectForm.resultados_planes_mejora" placeholder="Resultado del plan (Requerido)" data-required="true" required="required" class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" aria-invalid="true"></textarea>
+            </fieldset>
+        </div>
+        <br>
+        <div >
+            <div class="create-project-action">
+                <a variant="secondary" type="button" title="Volver" class="btn-small create-project-action-cancel" href="">Volver</a>
+                <button type="submit" class="btn-small create-project-action-submit" title="Asignar Proyecto">Guardar Riesgo</button>
+            </div>
+        </div>
+        <br>
+    </form>
+      
+
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+    
+{% endblock %}
+
+

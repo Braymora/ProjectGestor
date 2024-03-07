@@ -1,0 +1,76 @@
+{% extends 'plantilla.html' %}
+{% load static %}
+{% block id_project %}proyecto.id{% endblock %}
+
+{% block title %} gestion de proyecto - {{proyecto.name}} {% endblock %}
+{% block name %}
+{{proyecto.name}}
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static './css/stilos_kanban.css' %}">
+<link rel="stylesheet" href="{% static './css/docu.css' %} ">
+{% endblock %}
+
+{% block conten %}
+
+<br>
+<div class="content-docu">
+    <div class="containerUp-headertable">
+        <button class="containerUp-headertable__buttom" id="btnnewDoc">
+            +
+        </button>
+    </div>
+    <table class="tableDoc">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Url</th>
+                <th>Descripción</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for docu in  docus%}
+                <tr>
+                    <td>{{docu.titulo}}</td>
+                    <td><a href="{{docu.link}}">Haga clic aquí</a>
+                        </td>
+                    <td>{{docu.descriocion}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <div class="contmodal">
+        <form class="contmodal-date" method="post" >
+            {% csrf_token %}
+            <span class="contmodal-date__btnClose" id="clouse">x</span>
+            <div class="contmodal-date__input">
+                <label for="titulo">Titulo:</label>
+                <input type="text" id="titulo" name="titulo" placeholder="Por favor ingresa el titulo del documento" />
+            </div>
+            <div class="contmodal-date__input">
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion" name="descripcion" cols="30" rows="10" placeholder="Ingresa la información"></textarea>
+            </div>
+            <div class="contmodal-date__input">
+                <label for="url">Url:</label>
+                <input type="text" id="url" name="url" placeholder="Por favor ingresa la ubicación del archivo" />
+            </div>
+            <button type="submit" class="btnsave">
+                <i class="fas fa-cloud-upload-alt"></i><span>Guardar ruta</span>
+            </button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}
+
+
+{% block scripts %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{% static './js/documodal.js' %}" defer></script>
+<!-- <script src="script.js"></script> -->
+{% endblock %}

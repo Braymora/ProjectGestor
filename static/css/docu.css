@@ -1,0 +1,271 @@
+* {
+    box-sizing: border-box;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Tabla vista documentos (docu) */
+.content-docu {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    margin-top: 16px;
+    overflow-x: auto;
+    overflow-y: auto;
+    height: 500px;
+    padding: 12px;
+    width: 96%;
+}
+
+.containerUp {
+    position: relative;
+}
+
+.containerUp-headertable {
+    padding: 6px;
+    background-color: #e6e6fa;
+    display: flex;
+    justify-content: end;
+}
+
+.containerUp-headertable__buttom {
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    color: #2e3440;
+    background-color: #83eede;
+    transition: all .08s ease;
+}
+
+.containerUp-headertable__buttom:hover {
+    background-color: #008AA8;
+}
+
+/* ==============Modal============== */
+
+.contmodal {
+    align-items: center;
+    background: rgba(12, 12, 12, 0.28);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.6px);
+    -webkit-backdrop-filter: blur(3.6px);
+
+    display: none;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    justify-content: center;
+    width: 100%;
+    z-index: 1;
+}
+
+.contmodal-date {
+    padding: 16px;
+    background-color: white;
+    border-radius: 4px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    width: 400px;
+}
+
+span.contmodal-date__btnClose {
+    align-items: center;
+    background-color: #83eede;
+    border-radius: 4px;
+    color: #2e3440;
+    cursor: pointer;
+    display: flex;
+    height: 30px;
+    justify-content: center;
+    padding: 8px;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    transition: all .4s ease;
+    width: 30px;
+}
+
+span.contmodal-date__btnClose:hover {
+    background-color: #008AA8;
+    color: #ffffff;
+}
+
+.contmodal-date__input {
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+}
+
+.contmodal-date__input label {
+    color: #85888d;
+    margin-bottom: 4px;
+}
+
+.contmodal-date__input input,
+textarea {
+    border-radius: 4px;
+    border: solid 1px #85888d;
+    color: #85888d;
+    outline: none;
+    padding: 12px;
+}
+
+
+/* Oculta el input predeterminado */
+.inptfile {
+    display: none;
+}
+
+/* Estilo personalizado para el label */
+.custom-file-upload {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #008AA8;
+    /* Cambia el color de fondo a tu gusto */
+    color: white;
+    /* Cambia el color del texto a tu gusto */
+    border-radius: 5px;
+    /* Añade bordes redondeados */
+}
+
+/* .custom-file-upload i {
+    margin-right: 12px;
+} */
+
+button.btnsave {
+    align-items: center;
+    background-color: #83eede;
+    border: none;
+    border-radius: 4px;
+    color: #3c3f42;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    padding: 12px;
+    position: relative;
+    margin: 0 auto;
+    transition: all 0.4s ease;
+    width: 146px;
+}
+
+button.btnsave i {
+    margin: 0 4px;
+}
+
+button.btnsave:hover {
+    background-color: #008AA8;
+    color: #ffffff;
+}
+
+/* ==========table========== */
+.tableDoc {
+    border: 1px sólido #008AA8;
+    border-collapse: colapso;
+
+}
+
+.tableDoc th {
+    border: 1px sólido #008AA8;
+    padding: 5px;
+    background: #e6e6fa;
+}
+
+.tableDoc td {
+    border: 1px sólido #008AA8;
+    padding: 5px;
+}
+
+table {
+    padding-top: 5px;
+    width: 100%;
+}
+
+tr,
+th {
+    gap: 5px;
+    text-align: center;
+}
+
+tr,
+th {
+    width: calc(100% / 3);
+}
+
+
+
+
+/* ========Alertas============= */
+
+.alert {
+    padding: 16px;
+    max-width: 440px;
+    min-width: 200px;
+}
+
+.alertsucces {
+    background-color: #00a88c;
+}
+
+.alerterror {
+    background-color: #d6482f;
+}
+
+.alertWarning {
+    background-color: #d19017;
+}
+
+.alertInfo {
+    background-color: #008AA8;
+}
+
+
+
+.alertsucces-texts {
+    align-items: center;
+    display: flex;
+    color: #ffffff;
+    justify-content: space-between;
+    text-align: left;
+}
+
+.alertsucces-texts strong {
+    font-size: 1.8rem;
+}
+
+.alertsucces-texts p {
+    font-size: 1.4rem;
+}
+
+.alertsucces-texts__icon .fas {
+    font-size: 2rem;
+    padding: 14px;
+}
+
+@media screen and (max-width: 500px) {
+    .contmodal-date {
+        width: 200px;
+    }
+
+    span.contmodal-date__btnClose {
+        font-size: .8rem;
+        height: 8px;
+        width: 8px;
+    }
+
+    .contmodal-date__input {
+        padding: 0px;
+        margin-bottom: 4px;
+    }
+
+    .contmodal-date__input label,
+    input,
+    textarea {
+        font-size: 0.6em;
+    }
+}

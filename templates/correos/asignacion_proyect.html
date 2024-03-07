@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asignación a Proyecto</title>
+    <!-- <link rel="stylesheet" href="/css/asignacion.css"> -->
+    <style>
+        :root {
+    --primary: #0b3d93;
+    --blue-bayoux-50: #f5f8fa;
+    --blue-bayoux-100: #e9eff5;
+    --blue-bayoux-200: #cfdde8;
+    --blue-bayoux-600: #3b6381;
+    --blue-bayoux-700: #345670;
+    --blue-bayoux-800: #0b3d93;
+    --blue-bayoux-900: #122754;
+    --blue-bayoux-950: #080d28;    
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 600px;
+    padding: 20px;
+}
+
+.header {
+    margin-bottom: 30px;
+
+}
+
+.header h1 {
+    font-size: 24px;
+    padding: 10px 0;
+    margin: 0;
+    background-color: var(--blue-bayoux-800);
+    color: #ece7e7;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+
+}
+
+
+.card {
+    background-color: #fff; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    height: 350px;
+}
+
+h1 {
+    color: #333;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+p {
+    color: #666;
+    font-size: 18px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+strong {
+    color: #007bff;
+}
+
+/* Botón de acción */
+.cta-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: var(--blue-bayoux-600);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color:var(--blue-bayoux-600) ;
+    color: var(--blue-bayoux-200);
+}
+
+.footer {
+    margin-top: 20px;
+    color: #666;
+    font-size: 14px;
+    text-align: center;
+    line-height: 1.6;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="header" style="background-color: #007bff;">
+                <h1>colvatel</h1>
+            </div>
+            <h1>Hola...</h1>
+            <p>¡Se te ha asignado a un proyecto!</p>
+            <p>Has sido asignado al proyecto <strong>HERRAMIENTA GESTIÓN DE PROYECTOS</strong></p>
+            <a href="http://localhost:4000/project/new/{{contexto.codigo}}" class="cta-button">Aceptar tu asignación</a>
+        </div>
+        <div class="footer">
+            <p>Este es un mensaje automático. Por favor, no respondas a este correo electrónico.</p>
+            <p>© 2024 colvatel. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</body>
+</html>

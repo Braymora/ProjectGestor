@@ -1,0 +1,179 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    z-index: 1000;
+    color: #fff;
+}
+
+.nav-left {
+    float: left;
+}
+
+.dropdown-project-list {
+    position: relative;
+}
+
+.dropdown-project-list-projects {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 1.5;
+    display: inline-block;
+    padding: 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.dropdown-project-list-projects:hover {
+    background-color: #555;
+}
+
+.dropdown-project-list-desc {
+    color: #ccc;
+    font-size: 14px;
+}
+
+.create-project-btn {
+    background-color: #444;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.create-project-btn:hover {
+    background-color: #666;
+}
+
+.dropdown-user-inner {
+    float: right;
+    position: relative;
+}
+
+.user-avatar {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.chevron {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.dropdown-user-navbar {
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-user-data {
+    margin-top: 5px;
+}
+
+.profile-link {
+    color: #fff;
+    text-decoration: none;
+}
+
+.profile-link.email {
+    font-size: 14px;
+    color: #ccc;
+}
+
+.edit-profile {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.edit-profile:hover {
+    text-decoration: underline;
+}
+
+.user-profile-option a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.user-profile-option a.secondary {
+    color: #999;
+}
+
+.container {
+    display: flex;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #333;
+    padding-top: 20px;
+    color: #ccc;
+    position: fixed;
+    top: 50px;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar.collapsed {
+    width: 60px;
+}
+
+.sidebar ul {
+    padding-left: 0;
+    list-style-type: none;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    color: #ccc;
+    text-decoration: none;
+    padding: 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: #555;
+    color: #fff;
+}
+
+.sidebar a i {
+    margin-right: 10px;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    margin-left: 250px;
+}
+
+.collapse-button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.collapse-button:hover {
+    background-color: #333;
+}

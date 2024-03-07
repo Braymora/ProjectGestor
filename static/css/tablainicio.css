@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+    margin: 15px 0px;
+    font-weight: normal; /* Menos grueso */
+}
+
+table {
+    width: 60%; /* Aumenté el ancho para ajustar los campos más delgados */
+    text-align: left;
+}
+
+table,
+th,
+td {
+    font-size: 18px; /* Tamaño de fuente igual para todos */
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    border: 1px solid rgb(139, 133, 133);
+    border-collapse: collapse;
+    padding: 10px; /* Reduje el relleno para hacer los campos más delgados */
+    color: #000000;
+    font-weight: lighter; /* Hace las letras menos gruesas */
+}
+
+.descripcion {
+    width: 30%; /* Ancho igual para todas las columnas */
+    background-color: #ffffff; /* Color de fondo para la columna de descripción */
+}
+
+.proyecto {
+    width: 30%; /* Ancho igual para todas las columnas */
+    background-color: #eeeae2a8; /* Color de fondo para la columna de proyecto */
+}

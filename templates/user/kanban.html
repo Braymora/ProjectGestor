@@ -1,0 +1,109 @@
+{% extends 'plantilla.html' %}
+{% load static %}
+
+{% block title %} Gestión de Proyecto - {{ proyecto.name }} {% endblock %}
+{% block name %}
+    {{ proyecto.name }}
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static './css/stilos_kanban.css' %}">
+{% endblock %}
+
+{% block conten %}
+<style>
+    .kanban-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .kanban-column {
+        width: 30%;
+        margin-right: 20px;
+        border-radius: 5px;
+        padding: 10px;
+        min-height: 200px;
+        background-color: #f8f9fa; /* Fondo gris claro */
+        border: 1px solid #dee2e6;
+    }
+
+    .kanban-column-header {
+        color: #fff;
+        padding: 10px;
+        border-radius: 5px 5px 0 0;
+        text-align: center;
+    }
+
+    .kanban-column-body {
+        padding: 10px;
+    }
+
+    .kanban-card {
+        background-color: #fff; /* Fondo blanco para las tareas */
+        border: 1px solid #dee2e6;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+
+    /* Estilos para diferentes estados de las columnas */
+    .kanban-container > .kanban-column:nth-child(1) .kanban-column-header { background-color: #007bff; }
+    .kanban-container > .kanban-column:nth-child(2) .kanban-column-header { background-color: #ffc107; }
+    .kanban-container > .kanban-column:nth-child(3) .kanban-column-header { background-color: #28a745; }
+    .kanban-container > .kanban-column:nth-child(4) .kanban-column-header { background-color: #dc3545; }
+</style>
+
+<div class="main detail">
+    <h1 tg-main-title="" i18n-section-name="Kanban"><span>Kanban</span></h1>
+    <div class="row mt-10">
+        <br>
+        {% for columna in tablero.columnas.all %}
+            <div class="col-md-3">
+                <div class="panel panel-default" style="min-height: 400px;" >
+                    <div class="panel-heading kanban-column-header">
+                        <h3 class="panel-title">{{ columna.titulo }}
+                            <a href="{% url 'nuevaactividad' id_project=proyecto.id id_columna=columna.id %}" class="pull-right"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                        </h3>
+                    </div>
+                    <div class="panel-body column" data-id="{{ columna.id }}">
+                        {% for tarjeta in columna.tarjetas.all %}
+                            <div class="panel panel-primary tarjeta" data-id="{{ tarjeta.id }}">
+                                <div class="panel-heading tarjeta-header">
+                                    <h3 class="panel-title">{{ tarjeta.titulo }}
+                                        <a href="#" class="pull-right"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                        <a href="#" class="pull-right"><span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                                    </h3>
+                                </div>
+                                <div class="panel-body tarjeta-content">
+                                    {{ tarjeta.descripcion }} 
+                                </div>
+                                <span class="glyphicon glyphicon-move hide" aria-hidden="true"></span>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="modal fade" id="tarjeta-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <p>One fine body&hellip;</p>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static './js/scripts.js' %}"></script>
+{% endblock %}

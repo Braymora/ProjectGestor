@@ -1,0 +1,241 @@
+:root {
+    --color-principal: #2E3440;
+    --color-secundario: #3B4252;
+}
+
+a{
+    text-decoration: none;
+    color: antiquewhite;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0; 
+}
+
+body{
+    font-family: 'Protest Strike', sans-serif;
+    overflow: hidden; 
+}
+
+.contenedor-principal{
+    display: grid;
+	grid-template-rows: repeat(10, 1fr);
+	grid-template-columns: repeat(12, 1fr);
+	gap: 0;
+    height: 100%;
+	width: 100%;
+}
+
+/*menu lateral*/
+
+.menu-dashboard{
+	grid-area: 1 / 1 / 10 / 1;   
+}
+
+.top-menu{
+    background: var(--color-principal);
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    color: aqua;
+}
+ 
+.top-menu .logo{
+    align-items: center;
+    display: flex;
+}
+
+.top-menu .logo img {
+    border-radius: 30px;
+    transition: width .3s ease;
+    width: 40px;
+}
+
+.top-menu .logo span {
+    display: none;
+    font-size: 12px;
+    margin-left: 20px;
+    padding-right: 10px;
+}
+
+.bx-line-chart{
+    font-size: 35px;
+    padding: 5px;
+}
+
+hr{
+    border: solid 0.5px var(--color-principal);
+    margin: 14px auto auto;
+}
+
+.linea1{
+    position: absolute;
+    top: 380px;
+    width: 100%;
+}
+
+.linea2{
+    position: absolute;
+    bottom: 70px;
+    width: 100%;
+}
+
+.top-menu .toggle{
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    height: 20px;
+    justify-content: space-between;
+    width: 200px;
+}
+
+.top-menu .toggle i {
+    margin-top: 1px solid var(--color-secundario);
+    font-size: 35px;
+}
+
+.menu{
+
+    justify-content: left;
+    align-items: center; 
+
+    height: 40px;
+    color: #DFDFDF;
+
+    flex-direction: column;
+}
+
+.menu-dashboard{
+    background: var(--color-secundario);
+    height: 100vh;
+    position: relative;
+    transition: all 0.8s ease;
+    top: 48px;
+    width: 50px;
+}
+
+/*contenedor menu lateral abierto*/
+
+.menu-dashboard.open{
+    transition: all 0.8s ease;
+    grid-area: 1 / 1 / 12 / 1;   
+}
+
+.menu-dashboard.open .menu .enlace {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    font-size: 16px;
+    height: 44px;
+    justify-content: left;
+    width: 100%;
+    text-decoration: none;
+    margin: 0px;
+    width: 200px;
+    padding-top: 8px;
+    color: white;
+    opacity: 1;
+}
+
+.menu .enlace:hover {
+    background: var(--color-principal);
+    margin: 0px;
+    transition: left 0.5s ease;
+    width: 200px;
+    margin: 0px;
+    color: white;
+    opacity: 100%;
+}
+
+.menu .enlace i {
+    font-size: 25px;
+    padding: 5px;
+    color: white;
+    margin-top: 6px;
+}
+
+.menu-dashboard.open .menu .enlace span{
+    display: block;
+    opacity: 1;
+}
+
+.menu .enlace span {
+    margin-left: 15px;
+    opacity: 0;
+    transition: opacity .3s ease;
+}
+
+.menu .enlace:hover span {
+    opacity: 1;
+}
+
+.menu-dashboard.open {
+    width: 200px;
+}
+
+.menu-dashboard.open .top-menu .logo span {
+    display: block;
+}
+
+.enlace {
+    text-decoration: none;
+    align-items: center;
+    display: flex;
+    margin: 4px;
+}
+
+.boton-desplegable{
+    text-decoration: none;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 4px;
+}
+
+.bx-chevrons-left{
+    background: #080d28;
+    color: aqua;
+    border-radius: 40px;
+    opacity: 20%;
+    font-size: 25px;
+    position: absolute;
+    bottom: 60px;
+    right: 12px;
+    cursor: pointer;
+}
+
+.bx-chevrons-left:hover{
+    color: white;
+    opacity: 100%;
+}
+
+.rotated {
+    transform: rotate(180deg); /* Ajusta el ángulo de rotación según tu diseño */
+    transition: transform 0.3s ease; /* Agrega una transición suave para la rotación */
+  }
+
+/*contenedor header*/
+
+.menu-user{
+    background-color: #d4d4d4;
+    grid-area: 1 / 1 / 1 / 14; 
+    height: 48px;  
+}
+
+.bx-moon{
+    margin: 5px;
+    color: black;
+    font-size: 40px;
+    transform: rotate(40deg);
+}
+
+/*Contenedor principal*/
+.contdatos{
+    background-color: white;
+    margin-top: 48px;
+    grid-area: 1 / 2 / 12 / 14;   
+}
+
