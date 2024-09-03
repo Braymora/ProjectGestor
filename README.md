@@ -1,0 +1,1 @@
+Este proyecto se hizo para un grupo de documentadores que gestionan proyectos para ETB, donde se manejan vistas para tareas, para crear proyectos nuevos, para crear gestores e usuarios, para tener un control estadisco en cada proyecto y otras funciones.
